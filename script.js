@@ -4,7 +4,7 @@ const addBtn = document.querySelector(".add-icon")
 const darkBtn = document.querySelector(".dark-btn")
 const filterContainer = document.querySelector('.all-todos-container-footer')
 const leftItems = filterContainer.children[0]
-
+let mssgElem = document.querySelector('.hide-mssg');
 
 let todoData = JSON.parse(localStorage.getItem('todo')) || []
 let whichFilter = JSON.parse(localStorage.getItem('filter')) || {
@@ -17,6 +17,14 @@ localStorage.setItem('theme', JSON.stringify(isDarkMode))
 
 
 function addTodos(addTodo) {
+    if (input.value === '') {
+        document.querySelector('.error-mssg').classList.add('show-err')
+        setTimeout(() => {
+            document.querySelector('.error-mssg').classList.remove('show-err')
+        }, 2000);
+        return
+    }
+    
     todoData.push({ todo: input.value.trim(), isCompleted: false })
     localStorage.setItem('todo', JSON.stringify(todoData))
     displayTodo(input.value)
@@ -36,6 +44,12 @@ function showTodoFromLocal(todoArr) {
     addActiveStates(filterContainer.children[1].children[0], filterContainer.children[1].children[1], filterContainer.children[1].children[2])
 
     showLeftItems()
+    if (todoArr.length === 0) {
+        mssgElem.innerText = 'Your tasks will appear here'
+        mssgElem.classList.add('show-mssg')
+    }else{
+          mssgElem.innerText = ''
+    }
 }
 showTodoFromLocal(todoData)
 function displayTodo(todoContent) {
@@ -96,10 +110,9 @@ function deleteTodos(deleteItem) {
     let index = todoData.findIndex((i) => {
         return deleteItem.children[1].innerText === i.todo
     })
-
+    
     todoData.splice(index, 1)
     localStorage.setItem('todo', JSON.stringify(todoData))
-
     showLeftItems()
 }
 
@@ -268,7 +281,7 @@ function setDarkMode() {
         darkBtn.src = 'images/icon-sun.svg'
         document.querySelector("#container > div").classList.add('darkModeImg')
         document.body.classList.add('dark-mode')
-    }else{
+    } else {
         darkBtn.src = 'images/icon-moon.svg'
         document.querySelector("#container > div").classList.remove('darkModeImg')
         document.body.classList.remove('dark-mode')

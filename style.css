@@ -101,6 +101,7 @@ body.dark-mode{
     padding-inline: 24px;
     border-radius: 6px;
     box-shadow: 2px 8px 16px var(--box-shadow-color);
+    position: relative;
 }
 
 .todo-input input {
@@ -245,12 +246,32 @@ body.dark-mode{
 
 /* all active classes */
 
-.hide-show-text {
+.hide-mssg {
     text-align: center;
     font-size: 14px;
     color: var(--Light-Grayish-Blue);
     font-weight: 600;
     display: none;
+}
+
+.show-mssg{
+    display: block;
+}
+
+.error-mssg{
+    color: var(--Very-Dark-Blue);
+    font-weight: 700;
+    font-size: 18px;
+    position: absolute;
+    top: -40px;
+    left: 0;
+    transition: all 0.2s ease-in-out;
+    opacity: 0;
+}
+.error-mssg.show-err{
+    top: -50px;
+    display: block;
+    opacity: 1;
 }
 
 .check-container.check {
@@ -284,7 +305,8 @@ body.dark-mode{
 
 @media (max-width:500px) {
     .main-container {
-        margin-top: -36px
+        margin-top: -36px;
+        width: 88%;
     }
     #container .img-container {
         background-image: url(./images/bg-mobile-light.jpg);
