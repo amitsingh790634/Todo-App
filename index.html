@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <script src="script.js" defer></script>
+  <title>Todo app</title>
+</head>
+
+<body>
+
+  <section id="container">
+    <div class="img-container"></div>
+
+    <main class="main-container">
+      <div class="top-bar">
+        <h1>T O D O </h1>
+        <img width="28px" class="dark-btn light" src="images\icon-moon.svg" alt="">
+      </div>
+
+      <div class="todo-input">
+       <i class='bx bx-task add-icon'></i> 
+
+        <input type="text" placeholder="Create a new todo...">
+      </div>
+
+      <div class="all-todos-scroll-container">
+        <h3 class="hide-show-text">Your tasks are displayed here.</h3>
+
+        <!-- here dynamic todos(html-code) are added through javascript  -->        
+         
+      </div>
+      <div class="all-todos-container-footer">  
+        <span class="left-items">
+        </span>
+        
+        <div class="filter-container">
+        <span class="show-all">All</span>
+        <span class="show-active">Active</span>
+        <span class="show-completed">Completed</span>
+        </div>
+        
+        <span class="remove-completed">Clear Completed</span>
+        </div>
+      
+    </main>
+  </section>
+
+</body>
+
+</html>
